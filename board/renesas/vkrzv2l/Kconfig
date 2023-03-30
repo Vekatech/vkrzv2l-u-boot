@@ -1,0 +1,16 @@
+if TARGET_VKRZV2L
+
+config SYS_SOC
+        default "rmobile"
+
+config SYS_BOARD
+        default "vkrzv2l"
+
+config SYS_VENDOR
+        default "renesas"
+
+config SYS_CONFIG_NAME
+        default "vkrzv2l"
+
+endif
+
