@@ -1,3 +1,11 @@
+menu "Renesas specific commands"
+config CMD_CM33
+	bool "RZ/G2L CM33 commands"
+	help
+	  Commands used to enable and control the embedded CM33 in the RZ/G2L.
+
+endmenu
+
 menuconfig CMDLINE
 	bool "Command line interface"
 	default y
