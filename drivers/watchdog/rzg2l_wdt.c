@@ -43,6 +43,8 @@
 #define CPG_CLKON_WDT			0x11010548
 /* Reset Control Register WDT (CPG_RST_WDT) */
 #define CPG_RST_WDT			0x11010848
+/* WDT Reset Selector Register (CPG_WDTRST_SEL) */
+#define CPG_WDTRST_SEL		0x11010B14
 
 static bool second_init;
 bool watchdog_overflow;
@@ -128,8 +130,17 @@ static int rzg2l_expire_now(struct udevice *watchdog_dev, ulong flags)
 	if (!priv->is_active)
 		return -ENODEV;
 
-	/* Generate Reset (WDTRSTB) Signal on parity error */
-	rzg2l_wdt_write(priv, 0, PECR);
+	if (flags == 0) {
+		/* Generate Reset (WDTRSTB) Signal on parity error */
+        	rzg2l_wdt_write(priv, 0, PECR);
+    	}
+    	else
+    	{
+        	writel( readl(CPG_WDTRST_SEL) | BIT(4), CPG_WDTRST_SEL);
+
+        	/* Generate Reset (PEEROUT) Signal on parity error */
+        	rzg2l_wdt_write(priv, BIT(0), PECR);
+    	}
 
 	/* Force parity error */
 	rzg2l_wdt_write(priv, PEEN_FORCE, PEEN);
