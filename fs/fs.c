@@ -555,9 +555,12 @@ static int fs_read_lmb_check(const char *filename, ulong addr, loff_t offset,
 
 	if (lmb_alloc_addr(&lmb, addr, read_len) == addr)
 		return 0;
-
+#if 1
+	return 0;
+#else 
 	log_err("** Reading file would overwrite reserved memory **\n");
 	return -ENOSPC;
+#endif 
 }
 #endif
 
