@@ -47,6 +47,13 @@ config TCP_FUNCTION_FASTBOOT
 	help
 	  This enables the fastboot protocol over TCP.
 
+config USB_EPMAXPACK_FASTBOOT
+	bool "Controls fastboot USB maxpacket size while receiving"
+	depends on USB_FUNCTION_FASTBOOT
+	default n
+	help
+	  This controls maxpacket on USB rx_bytes.
+
 if FASTBOOT
 
 config FASTBOOT_BUF_ADDR
