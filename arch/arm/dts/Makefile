@@ -977,6 +977,18 @@ dtb-$(CONFIG_RCAR_GEN3) += \
 	rzg3s-dev.dtb \
 	smarc-rzg3s.dtb
 
+dtb-$(CONFIG_TARGET_VKRZG2LC) += vkrzg2lc.dtb
+dtb-$(CONFIG_TARGET_VK_D184280E) += vk-d184280e.dtb
+dtb-$(CONFIG_TARGET_VK_D184280E_1) += vk-d184280e_1.dtb
+dtb-$(CONFIG_TARGET_VKCMG2LC) += vkcmg2lc.dtb
+dtb-$(CONFIG_TARGET_VKCMG2LC_1) += vkcmg2lc_1.dtb
+dtb-$(CONFIG_TARGET_VKRZG2L) += vkrzg2l.dtb
+dtb-$(CONFIG_TARGET_VKRZG2UL) += vkrzg2ul.dtb
+dtb-$(CONFIG_TARGET_VKRZG2UL_512MB) += vkrzg2ul_512mb.dtb
+dtb-$(CONFIG_TARGET_VKRZV2L) += vkrzv2l.dtb
+dtb-$(CONFIG_TARGET_VKCMV2L) += vkcmv2l.dtb
+dtb-$(CONFIG_TARGET_VKCMG2L) += vkcmg2l.dtb
+
 dtb-$(CONFIG_RCAR_GEN4) += \
 	r8a779h0-gray-hawk.dtb
 

@@ -1,0 +1,33 @@
+if TARGET_VKCMG2LC || TARGET_VKCMG2LC_1
+
+config SYS_SOC
+        default "rmobile"
+
+config SYS_BOARD
+        default "vkcmg2lc"
+
+config SYS_VENDOR
+        default "renesas"
+
+config SYS_CONFIG_NAME
+        default "vkcmg2lc"
+
+config SYS_MMC_DEV
+	int
+	default 1 if ENV_IS_IN_SPI_FLASH
+	default 0
+
+config SYS_MMC_IMG_LOAD_PART
+	int
+	default 1
+
+config SYS_USB_DEV
+	int
+	default 0
+
+config SYS_USB_IMG_LOAD_PART
+	int
+	default 1
+
+endif
+

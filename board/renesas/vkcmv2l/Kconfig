@@ -1,0 +1,36 @@
+if TARGET_VKCMV2L
+
+config SYS_SOC
+        default "rmobile"
+
+config SYS_BOARD
+        default "vkcmv2l"
+
+config SYS_VENDOR
+        default "renesas"
+
+config SYS_CONFIG_NAME
+        default "vkcmv2l"
+
+config SYS_MMC_DEV
+	int
+	default 0
+
+config SYS_MMC_IMG_LOAD_PART
+	int
+	default 1
+
+config OPENCVA
+	int
+	default 1
+
+config SYS_USB_DEV
+	int
+	default 0
+
+config SYS_USB_IMG_LOAD_PART
+	int
+	default 1
+
+endif
+

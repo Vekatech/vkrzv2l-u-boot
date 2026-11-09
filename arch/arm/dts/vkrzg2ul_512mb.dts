@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Device Tree Source for the VK-RZG2UL board
+ *
+ */
+
+/dts-v1/;
+
+#include "vkrzg2ul.dtsi"
+
+/ {
+        model = "Vekatech vkrzg2ul board 512MB";
+	compatible = "renesas,r9a07g043u", "renesas,rzg2ul";
+
+        memory@48000000 {
+                device_type = "memory";
+                /* first 128MB is reserved for secure area. */
+                reg = <0 0x48000000 0 0x18000000>;
+        };
+};

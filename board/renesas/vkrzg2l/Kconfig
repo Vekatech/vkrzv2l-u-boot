@@ -1,0 +1,31 @@
+if TARGET_VKRZG2L
+
+config SYS_SOC
+        default "rmobile"
+
+config SYS_BOARD
+        default "vkrzg2l"
+
+config SYS_VENDOR
+        default "renesas"
+
+config SYS_CONFIG_NAME
+        default "vkrzg2l"
+
+config SYS_MMC_DEV
+	int
+	default 0
+
+config SYS_MMC_IMG_LOAD_PART
+	int
+	default 1
+
+config SYS_USB_DEV
+	int
+	default 0
+
+config SYS_USB_IMG_LOAD_PART
+	int
+	default 1
+endif
+

@@ -269,6 +269,62 @@ config TARGET_SMARC_RZG3S
 	help
           Support for Renesas RZ/G3S SMARC Platform
 
+config TARGET_VKRZG2L
+        bool "Vekatech VK-RZ/G2L Board "
+        help
+          Support for Vekatech VK-RZ/G2L Board
+
+config TARGET_VKRZG2LC
+        bool "Vekatech VK-RZ/G2LC Board "
+        help
+          Support for Vekatech VK-RZ/G2LC Board
+
+config TARGET_VKCMG2LC
+        bool "Vekatech VK-CMRZ/G2LC Board "
+        help
+          Support for Vekatech VK-CMRZ/G2LC Board
+
+config TARGET_VKCMG2LC_1
+        bool "Vekatech VK-CMRZ/G2LC Board 1GB DDR4"
+        help
+          Support for Vekatech VK-CMRZ/G2LC Board 1GB DDR4
+
+config TARGET_VKRZV2L
+        bool "Vekatech VK-RZ/V2L Board "
+        help
+          Support for Vekatech VK-RZ/V2L Board
+
+config TARGET_VKCMV2L
+        bool "Vekatech VK-CMRZ/V2L Board "
+        help
+          Support for Vekatech VK-CMRZ/V2L Board
+
+config TARGET_VKRZG2UL
+        bool "Vekatech VK-RZ/G2UL Board "
+        help
+          Support for Vekatech VK-RZ/G2UL Board
+
+config TARGET_VK_D184280E
+        bool "Vekatech VK-D184280E Board "
+        help
+          Support for Vekatech VK-D184280E Board
+
+config TARGET_VK_D184280E_1
+        bool "Vekatech VK-D184280E Board 1GB DDR4 "
+        help
+          Support for Vekatech VK-D184280E Board 1GB DDR4
+
+config TARGET_VKCMG2L
+        bool "Vekatech VK-CMRZ/G2L Board "
+        help
+          Support for Vekatech VK-CMRZ/G2L Board
+
+config TARGET_SOM_RZG2LC
+	bool "RZ/G2LC SOM board"
+	help
+          Support for Renesas RZ/G2LC Dev Platform
+
+
 endchoice
 
 source "board/renesas/condor/Kconfig"
@@ -289,6 +345,14 @@ source "board/renesas/rzg2ul-dev/Kconfig"
 source "board/renesas/rzv2h-dev/Kconfig"
 source "board/renesas/rzg3e-dev/Kconfig"
 source "board/renesas/rzg3s-dev/Kconfig"
+source "board/renesas/vkrzg2l/Kconfig"
+source "board/renesas/vkrzg2lc/Kconfig"
+source "board/renesas/vkcmg2lc/Kconfig"
+source "board/renesas/vkrzv2l/Kconfig"
+source "board/renesas/vkrzg2ul/Kconfig"
+source "board/renesas/vk-d184280e/Kconfig"
+source "board/renesas/vkcmv2l/Kconfig"
+source "board/renesas/vkcmg2l/Kconfig"
 
 config MULTI_DTB_FIT_UNCOMPRESS_SZ
 	default 0x80000 if TARGET_BEACON_RZG2M

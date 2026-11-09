@@ -1,0 +1,122 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Device Tree Source for the VK-CMRZ/G2LC board
+ *
+ */
+
+/dts-v1/;
+#include <dt-bindings/gpio/gpio.h>
+#include "r9a07g044c.dtsi"
+#include "r9a07g044c-u-boot.dtsi"
+#include <dt-bindings/pinctrl/rzg2l-pinctrl.h>
+
+/ {
+        model = "Vekatech vk-d184280e";
+        compatible = "renesas,r9a07g044c", "renesas,rzg2lc";
+
+        aliases {
+                serial0 = &scif0;
+        };
+
+        chosen {
+                stdout-path = "serial0:115200n8";
+        };
+
+        memory@48000000 {
+                device_type = "memory";
+                /* first 128MB is reserved for secure area. */
+                reg = <0 0x48000000 0 0x78000000>; 
+        };
+
+};
+
+&pinctrl {
+        eth0_pins: eth0 {
+                pinmux = <RZG2L_PINMUX(28, 1, 1)>, /* ET0_LINKSTA */
+                         <RZG2L_PINMUX(27, 1, 1)>, /* ET0_MDC */
+                         <RZG2L_PINMUX(28, 0, 1)>, /* ET0_MDIO */
+                         <RZG2L_PINMUX(20, 0, 1)>, /* ET0_TXC */
+                         <RZG2L_PINMUX(20, 1, 1)>, /* ET0_TX_CTL */
+                         <RZG2L_PINMUX(20, 2, 1)>, /* ET0_TXD0 */
+                         <RZG2L_PINMUX(21, 0, 1)>, /* ET0_TXD1 */
+                         <RZG2L_PINMUX(21, 1, 1)>, /* ET0_TXD2 */
+                         <RZG2L_PINMUX(22, 0, 1)>, /* ET0_TXD3 */
+                         <RZG2L_PINMUX(24, 0, 1)>, /* ET0_RXC */
+                         <RZG2L_PINMUX(24, 1, 1)>, /* ET0_RX_CTL */
+                         <RZG2L_PINMUX(25, 0, 1)>, /* ET0_RXD0 */
+                         <RZG2L_PINMUX(25, 1, 1)>, /* ET0_RXD1 */
+                         <RZG2L_PINMUX(26, 0, 1)>, /* ET0_RXD2 */
+                         <RZG2L_PINMUX(26, 1, 1)>; /* ET0_RXD3 */
+        };
+
+	i2c2_pins: i2c2 {
+                pinmux = <RZG2L_PINMUX(42, 3, 1)>,
+                         <RZG2L_PINMUX(42, 4, 1)>;
+        }; 
+
+};
+
+&xinclk {
+        clock-frequency = <24000000>;
+};
+
+&scif0 {
+        status = "okay";
+        clock = <100000000>;
+};
+
+&sdhi0 {
+        bus-width = <8>;
+	non-removable; /* Forces U-Boot to assume the card is instantly present */
+        status = "okay";
+};
+
+&eth0 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&eth0_pins>;
+        phy-handle = <&phy0>;
+        phy-mode = "rgmii-id";
+        status = "okay";
+
+        phy0: ethernet-phy@1 {
+                reg = <1>;
+		reset-gpios = <&P39 1 GPIO_ACTIVE_LOW>;
+        };
+};
+
+&ehci0 {
+        status = "okay";
+}; 
+
+&hsusb {
+	dr_mode = "otg";
+	status = "okay";
+};
+
+&i2c0 {
+        pinctrl-names = "default";
+        status = "okay";
+
+	eeprom0: eeprom@50 {
+		compatible = "atmel,24c02";
+		reg = <0x50>;
+		pagesize = <16>;
+	};
+};
+
+&i2c1 {
+        pinctrl-names = "default";
+        status = "okay";
+};
+
+&i2c2 {
+        pinctrl-0 = <&i2c2_pins>;
+        pinctrl-names = "default";
+        status = "okay";
+};
+
+
+&wdt0 {
+        status = "okay";
+        timeout-sec = <60>;
+};

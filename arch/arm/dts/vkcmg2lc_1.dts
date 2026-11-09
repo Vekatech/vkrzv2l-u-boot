@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Device Tree Source for the VK-CMRZ/G2LC board 1GB
+ *
+ */
+
+/dts-v1/;
+
+#include "vkcmg2lc.dtsi"
+
+/ {
+        model = "Vekatech vkcmg2lc-1GB";
+        compatible = "renesas,r9a07g044c", "renesas,rzg2lc";
+
+        memory@48000000 {
+                device_type = "memory";
+                /* first 128MB is reserved for secure area. */
+                reg = <0 0x48000000 0 0x38000000>; 
+        };
+
+};
